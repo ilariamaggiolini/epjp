@@ -1,4 +1,4 @@
-package s045;
+  package s045;
 
 public class AboutString {
     public static void main(String[] args) {
