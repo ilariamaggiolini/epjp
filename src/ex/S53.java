@@ -26,7 +26,7 @@ public class S53 {
 
 		double pow1 = Math.pow(x1 - x0, 2);
 		double pow2 = Math.pow(y1 - y0, 2);
-		
+
 		return result = Math.sqrt(pow1 + pow2);
 
 	}
@@ -40,22 +40,22 @@ public class S53 {
 	 * @return the engine capacity in cm^3
 	 */
 	public static double engineCapacity(double bore, double stroke, int nr) {
-		
-		double cilindrata = Math.pow(bore / 2, 2) * Math.PI * stroke * nr /1000;
-		
+
+		double cilindrata = Math.pow(bore / 2, 2) * Math.PI * stroke * nr / 1000;
+
 		return cilindrata;
 	}
-
-	// somma delle cifre in un numero
-	/**
-	 * Add up all the digits in an integer
-	 * 
-	 * @param value
-	 * @return sum of digits
-	 */
-	public static int digitSum(int value) {
-		double result = 0;
-		double somma = Math.sum;
-		return result;
-	}
 }
+// somma delle cifre in un numero
+/**
+ * Add up all the digits in an integer
+ * 
+ * @param value
+ * @return sum of digits
+ */
+//	public static int digitSum(int value) {
+//		double result = 0;
+//		double somma = Math.sum;
+//		return result;
+//	}
+//}
