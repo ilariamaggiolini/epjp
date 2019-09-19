@@ -21,15 +21,15 @@ public class S53 {
 	 * @param y1 second point y
 	 * @return distance
 	 */
-	public static double distance(int x0, int y0, int x1, int y1) {
-		double result = 0;
-
-		double pow1 = Math.pow(x1 - x0, 2);
-		double pow2 = Math.pow(y1 - y0, 2);
-
-		return result = Math.sqrt(pow1 + pow2);
-
-	}
+//	public static double distance(int x0, int y0, int x1, int y1) {
+//		double result = 0;
+//
+//		double pow1 = Math.pow(x1 - x0, 2);
+//		double pow2 = Math.pow(y1 - y0, 2);
+//
+//		return result = Math.sqrt(pow1 + pow2);
+//
+//	}
 
 	/**
 	 * Engine capacity
@@ -45,17 +45,17 @@ public class S53 {
 
 		return cilindrata;
 	}
-}
+
 // somma delle cifre in un numero
-/**
- * Add up all the digits in an integer
- * 
- * @param value
- * @return sum of digits
- */
-//	public static int digitSum(int value) {
-//		double result = 0;
+	/**
+	 * Add up all the digits in an integer
+	 * 
+	 * @param value
+	 * @return sum of digits
+	 */
+	public static int digitSum(int value) {
+		int result = 0;
 //		double somma = Math.sum;
-//		return result;
-//	}
-//}
+		return result;
+	}
+}
