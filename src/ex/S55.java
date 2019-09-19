@@ -9,6 +9,10 @@ public class S55 {
      * @return the sum of all the numbers, or zero
      */
     public static long sum(int first, int last) {
+    	if (last<first) {
+    		return 0;
+    	} else {
+    	for (int i=0; ;i++)
         // TODO
         return 0;
     }
