@@ -62,8 +62,21 @@ public class S55 {
 	 * @return the Fibonacci number of value, or zero
 	 */
 	public static long fibonacci(int value) {
-		// TODO
-		return 0;
+		int fibo = 0;
+		int a = 0;
+		int b = 1;
+		if (value == 0) {
+			return a;
+		}
+		if (value == 1) {
+			return b;
+		}
+		for (int i = 2; i < value + 1; i++) {
+			fibo = a + b;
+			a = b;
+			b = fibo;
+		}
+		return fibo;
 	}
 
 	/**
@@ -73,9 +86,14 @@ public class S55 {
 	 * @return The multiplication table for value, when possible
 	 */
 	public static int[][] multiplicationTable(int value) {
-		int[][] result = new int[0][0];
+		int[][] result = new int[value][value];
 
-		// TODO
+		for (int i = 1; i <= value; i++) {
+			for (int j = 1; j <= value; j++) {
+				result[i-1][j-1] = i * j;
+			}
+
+		}
 
 		return result;
 	}

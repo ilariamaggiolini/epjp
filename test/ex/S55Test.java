@@ -80,11 +80,15 @@ class S55Test {
 
     @Test
     void fibonacci() {
-        fail("Not yet implemented");
+        long actual = S55.fibonacci(8);
+        
+        assertThat(actual,is(21L));
     }
 
     @Test
     void multiplicationTable() {
-        fail("Not yet implemented");
+    	int [][] actual = S55.multiplicationTable(5);
+    	
+    	assertThat(actual[4][2],is(15));
     }
 }
