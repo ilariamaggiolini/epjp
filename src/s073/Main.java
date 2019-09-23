@@ -17,6 +17,8 @@ public class Main {
         if (pet instanceof Cat) {
             Cat tom = (Cat) pet;
             tom.meow();
+        } else {
+        	System.out.println("This pet is not a cat");
         }
     }
 }

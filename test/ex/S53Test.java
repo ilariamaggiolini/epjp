@@ -22,19 +22,19 @@ class S53Test {
 		assertThat(actual, is(Double.POSITIVE_INFINITY));
 	}
 
-	@Test
-	void distanceSquareTwo() {
-		double actual = S53.distance(1, 10, 2, 9);
-
-		assertEquals(actual, Math.sqrt(2), 0.000_001);
-	}
-
-	@Test
-	void distanceZero() {
-		double actual = S53.distance(27, 42, 27, 42);
-
-		assertThat(actual, is(0.0));
-	}
+//	@Test
+//	void distanceSquareTwo() {
+//		double actual = S53.distance(1, 10, 2, 9);
+//
+//		assertEquals(actual, Math.sqrt(2), 0.000_001);
+//	}
+//
+//	@Test
+//	void distanceZero() {
+//		double actual = S53.distance(27, 42, 27, 42);
+//
+//		assertThat(actual, is(0.0));
+//	}
 
 	@Test
 	void engineCapacityPlain() {

@@ -15,7 +15,8 @@ public class Dog implements BarkAndWag {
 
         return sb.toString();
     }
-
+//bark(int count) ha un parametro e quindi è diverso da bark.
+    
     @Override
     public int tailWaggingSpeed() {
         return BarkAndWag.AVG_WAGGING_SPEED;
