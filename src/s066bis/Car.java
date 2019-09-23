@@ -2,12 +2,11 @@ package s066bis;
 
 public class Car extends Vehicle implements Conditioning {
 
-    @Override
+	@Override
 
-    public void setTemperature(int newTemp) {
+	public void setTemperature(int newTemp) {
 
-        System.out.println("Car temperature now is " + newTemp);
+		System.out.println("Car temperature now is " + newTemp);
 
-    }
-
+	}
 }
