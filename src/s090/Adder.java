@@ -19,3 +19,5 @@ public class Adder {
         System.out.println("Total is " + result);
     }
 }
+//Control C per terminare, perchè è un loop infinito. In questo caso con Windows è Control Z.
+// Devo scrivere i numeri sotto in console.
