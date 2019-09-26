@@ -6,6 +6,7 @@ public class Node {
 
 	public Node(int value) {
 		this.value = value;
+		this.next = null;
 	}
 
 	public int getValue() {
@@ -18,5 +19,9 @@ public class Node {
 
 	public void setNext(Node next) {
 		this.next = next;
+	}
+	public String toString() {
+		return ""+ this.value+"";
+		
 	}
 }

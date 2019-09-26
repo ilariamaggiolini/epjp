@@ -6,10 +6,10 @@ public static void main (String[]args) {
 	System.out.println("Empty list" + ml);
 	
 	ml.add(42);
-	System.out.println("List with one node" + ml);
+	System.out.println("List with one node" + ml.toString());
 	
 	ml.add(-7);
-	System.out.println("List with one node" +ml);
+	System.out.println("List with one node" +ml.toString());
 }
 
 }
