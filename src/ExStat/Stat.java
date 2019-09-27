@@ -1,29 +1,37 @@
 package ExStat;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Iterator;
+import java.util.TreeMap;
 
 public class Stat {
-
 	public static void main(String[] args) {
-		HashMap<Character, Integer> h = new HashMap<Character, Integer>();
-		String s = "abcbab";
-		String unique = new String();
+		String s = "chiara";
+		System.out.println(s);
+		System.out.println(getStat(s));
+		System.out.println();
+	}
 
+	public static Entry<Integer, Character> getStat(String s) {
+		HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+		Character ch;
 		for (int i = 0; i < s.length(); i++) {
-			if (h.containsKey(s.charAt(i))) {
-				h.put(s.charAt(i), (int) h.get(s.charAt(i)) + 1);
+			ch = s.charAt(i);
+			if (map.containsKey(ch)) {
+				map.put(ch, map.get(ch) + 1);
 			} else {
-				h.put(s.charAt(i), 1);
-				unique += s.charAt(i);
+				map.put(ch, 1);
 			}
 		}
-
-		Set<Map.Entry<Character, Integer>> freq = h.entrySet();
-		Iterator<Map.Entry<Character, Integer>> it = freq.iterator();
-
+		TreeMap<Integer, Character> tm = new TreeMap<Integer, Character>();
+		Iterator<Map.Entry<Character, Integer>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Map.Entry<Character, Integer> item = it.next();
-			System.out.println(item.getKey() + ": " + item.getValue());
+			Map.Entry<Character, Integer> a = it.next();
+			tm.put(a.getValue(), a.getKey());
 		}
+		tm.lastEntry();
+		return tm.lastEntry();
 	}
 }
