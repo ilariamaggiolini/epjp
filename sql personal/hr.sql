@@ -181,6 +181,10 @@ WHERE commission_pct is not null;
 select first_name, last_name 
    from employees 
    where last_name like 'A' or first_name 'A';
+   
+select first_name, last_name 
+   from employees 
+   where regexp_like(last_name, '[Aa].');  
 
 --? Departments: Nomi, in ordine naturale
 SELECT department_name
@@ -301,6 +305,24 @@ on(e.manager_id = m.manager_id)
 -- ? Nome degli employees che non sono manager
 select
 from employees
-
+--
 where job_title != 'Manager'
 
+
+-- ? Employees
+--– Qual è il salario corrente, quale sarebbe con un incremento dell’8.5%, qual è il delta come valore assoluto
+select last_name, first_name, salary, salary * 11.7647059
+from employees;
+
+--- Chi ha ‘a’ nel nome o cognome
+select first_name, last_name 
+   from employees 
+   where regexp_like(last_name, '[a]'); 
+   
+--– Quanti mesi sono passati dall’assunzione a oggi
+select last_name, first_name, TRUNC (months_between (sysdate, hire_date)) as ass_actual
+from employees;
+
+
+--– Salario mostrato come una serie di asterischi (1 = 1000€)
+--– Quant’è la commissione di ognuno o ‘no value’
