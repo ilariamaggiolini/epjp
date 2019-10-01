@@ -449,3 +449,9 @@ select first_name, last_name
 from employees 
 where manager_id in (select employee_id from employees where last_name = 'King' and first_name = 'Steven');
 
+insert into regions
+VALUES(12,null);
+
+select * from regions;
+
+rollback;
