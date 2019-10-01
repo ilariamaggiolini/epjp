@@ -303,11 +303,21 @@ from employees e join employees m
 on(e.manager_id = m.manager_id)
 
 -- ? Nome degli employees che non sono manager
-select
+select first_name, last_name 
 from employees
---
-where job_title != 'Manager'
+where employee_id in (select manager_id 
+                    from employees);
 
+-- Vogliamo vedere la media di tutti i salari dei dipartimenti, escludendo i manager
+select department_id, trunc(avg(salary)) from employees
+group by department_id having avg(salary) < (
+select max(avg(salary)) from employees group by department_id);
+
+-- Dammi il nome del manager di Chen
+select first_name, last_name from employees
+where employee_id = (select manager_id 
+                     from employees 
+                     where last_name = 'Chen');
 
 -- ? Employees
 --– Qual è il salario corrente, quale sarebbe con un incremento dell’8.5%, qual è il delta come valore assoluto
@@ -323,6 +333,109 @@ select first_name, last_name
 select last_name, first_name, TRUNC (months_between (sysdate, hire_date)) as ass_actual
 from employees;
 
+----- Quant’è la commissione di ognuno o ‘no value’
+select first_name, last_name, nvl(to_char(commission_pct, '0,99'), 'no value'), commission_pct 
+from employees; --metto to char xkè devo inserire no value e '0.99' perchè i risulati uscivano senza zero iniziale
 
 --– Salario mostrato come una serie di asterischi (1 = 1000€)
---– Quant’è la commissione di ognuno o ‘no value’
+select lpad('tom', 5, '.') tom, rpad('tim', 10, '_- -_') tim from dual;
+
+select lpad('*', round(salary/1000), '*')salary,salary
+from employees;
+
+select manager_id, trunc(avg(salary))
+from employees
+where salary < 8000
+group by manager_id
+having avg(salary) > 6000
+order by 2 desc;
+
+select *
+from (select employee_id from employees where employee_id between 112 and 115);
+--sto creando una tab temporale che potrà avere un uso
+select employee_id
+from (select employee_id from employees where employee_id between 112 and 115);
+
+--? Employees
+--– Salary: maggiore, minore, somma, media
+select max(salary)max, min(salary)min, sum(salary)sum, avg(salary)avg
+from employees
+order by 1;
+
+
+--? Come sopra, ma per ogni job_id
+select max(salary)max, min(salary)min, sum(salary)sum, avg(salary)avg
+from employees
+group by job_id
+order by 1;
+
+--– Quanti dipendenti per ogni job_id
+select count(employee_id)
+from employees
+group by job_id
+order by 1;
+
+--? Quanti sono gli IT_PROG
+select count(employee_id)
+from employees
+group by job_id
+having job_id like 'IT_PROG';
+
+--– Quanti sono i manager
+select count(distinct (manager_id))
+from employees;
+
+--– Qual è la differenza tra il salario maggiore e il minore
+select max(salary)-min(salary) as difference
+from employees;
+
+--? Come sopra, ma per ogni job_id, non considerando dove non c’è differenza
+select max(salary)-min(salary) as difference
+from employees
+group by job_id
+having max(salary)-min(salary)>0;
+
+--– Qual è il salario minimo con i dipendenti raggruppati per manager, non considerare chi non ha manager, né i gruppi con salario minimo inferiore a 6.000€
+select min(salary)
+from employees
+where salary>6000 and employee_id in (select manager_id 
+                    from employees);
+                    
+--? Indirizzi completi, tra locations e countries
+select street_address, country_name
+from locations join countries using (country_id);
+
+--? Employees
+--– Name e department name
+select first_name, last_name, department_name
+from employees join departments
+using (department_id);
+
+--? Come sopra, ma solo per chi è basato a Toronto
+select first_name, last_name, department_name, city
+from employees join departments
+using (department_id) join locations using (location_id) 
+where city like 'Toronto';
+
+--– Chi è stato assunto dopo David Lee
+select first_name, last_name, hire_date
+from employees
+where hire_date > (select hire_date from employees where first_name='David' and last_name='Lee');
+
+--– Chi è stato assunto prima del proprio manager
+select first_name, last_name, hire_date
+from employees
+where hire_date > (select hire_date from employees where employee_id = (select manager_id from employees));
+
+select first_name, last_name, hire_date
+from employees
+where hire_date > (select hire_date from employees
+where employee_id = (select manager_id from employees);
+
+select first_name, last_name from employees
+where employee_id = (select manager_id from employees);
+   
+--– Chi ha lo stesso manager di Lisa Ozer
+--– Chi lavora in un department in cui c’è almeno un employee con una ‘u’ nel cognome
+--– Chi lavora nel department Shipping
+--– Chi ha come manager Steven King
