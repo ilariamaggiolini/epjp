@@ -423,19 +423,29 @@ from employees
 where hire_date > (select hire_date from employees where first_name='David' and last_name='Lee');
 
 --– Chi è stato assunto prima del proprio manager
-select first_name, last_name, hire_date
-from employees
-where hire_date > (select hire_date from employees where employee_id = (select manager_id from employees));
-
-select first_name, last_name, hire_date
-from employees
-where hire_date > (select hire_date from employees
-where employee_id = (select manager_id from employees);
-
-select first_name, last_name from employees
-where employee_id = (select manager_id from employees);
+select e.first_name, e.last_name, e.hire_date, m.hire_date as hire_date_man
+from employees e join employees m 
+on(e.manager_id =m.manager_id)
+where e.hire_date<m.hire_date;
    
 --– Chi ha lo stesso manager di Lisa Ozer
+select e.first_name, e.last_name
+from employees e 
+where e.manager_id = (select manager_id from employees where first_name = 'Lisa' and last_name = 'Ozer');
+
 --– Chi lavora in un department in cui c’è almeno un employee con una ‘u’ nel cognome
+select first_name, last_name, department_id
+from employees
+where department_id in (select department_id from employees where REGEXP_LIKE (last_name, 'u', 'i')); --i serve x mainuscolo e minuscolo
+
 --– Chi lavora nel department Shipping
+select first_name, last_name
+from employees join departments
+using (department_id)
+where department_name like 'Shipping';
+
 --– Chi ha come manager Steven King
+select first_name, last_name
+from employees 
+where manager_id in (select employee_id from employees where last_name = 'King' and first_name = 'Steven');
+
