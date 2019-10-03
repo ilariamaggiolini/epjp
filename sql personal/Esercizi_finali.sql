@@ -46,7 +46,7 @@ begin
     dbms_output.put_line(v_first_name || ' ' || v_last_name);
 exception
     when others then
-     dbms_output.put_line('Can''t exist ');
+     dbms_output.put_line('Can''t exist');
 end;
 /
 
