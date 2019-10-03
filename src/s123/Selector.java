@@ -28,8 +28,10 @@ public class Selector {
 	}
 
 	public List<Coder> getCoders() throws SQLException {
-		try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD); //
-				Statement stmt = conn.createStatement()) {
+		try ( // questo blocco nel try con 2 risorse(2statement). Sto creanso una connection passando parametri
+			Connection conn = DriverManager.getConnection(URL, USER, PASSWORD); //
+			Statement stmt = conn.createStatement()) {
+			
 			ResultSet rs = stmt.executeQuery("SELECT first_name, last_name, salary FROM coders ORDER BY 1");
 
 			List<Coder> results = new ArrayList<>();
