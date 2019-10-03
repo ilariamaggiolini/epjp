@@ -21,8 +21,8 @@ public class Selector {
 					"SELECT first_name FROM coders ORDER BY 1");
 
 			List<String> results = new ArrayList<>();
-			while (rs.next()) {
-				results.add(rs.getString(1));
+			while (rs.next()) { //chiamata a next, meccanismo interazione
+				results.add(rs.getString(1)); //tanti metodi di result get, questo è di tipo standard. prima riga è di indice 1 e devo dirlo io dov'è la colonna
 			}
 			
 			return results;
