@@ -49,3 +49,5 @@ exception
      dbms_output.put_line('Can''t exist ');
 end;
 /
+
+COMMIT;
