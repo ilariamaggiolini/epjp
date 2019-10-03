@@ -16,7 +16,7 @@ public class Selector {
 	public List<String> getCoderNames() throws SQLException {
 		try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD); //
 				Statement stmt = conn.createStatement()) {
-			ResultSet rs = stmt.executeQuery("SELECT first_name FROM coders ORDER BY 1 DESC");
+			ResultSet rs = stmt.executeQuery("SELECT first_name FROM coders ORDER BY 1");
 
 			List<String> results = new ArrayList<>();
 			while (rs.next()) {
