@@ -17,6 +17,10 @@ public class DriverManagerConnector {
 //            if (user==null) {
 //            	user=conn.getCatalog();
 //            }
+//            System.out.println("Connected as " +  user);
+//			  } catch (SQLException e) {
+//            e.printStackTrace();
+            
             System.out.println("Connected as " + conn.getSchema());
         } catch (SQLException e) {
             e.printStackTrace();
