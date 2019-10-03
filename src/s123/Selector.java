@@ -22,7 +22,7 @@ public class Selector {
 			while (rs.next()) {
 				results.add(rs.getString(1));
 			}
-
+			
 			return results;
 		}
 	}
@@ -36,7 +36,7 @@ public class Selector {
 			while (rs.next()) {
 				results.add(new Coder(rs.getString(1), rs.getString(2), rs.getInt(3)));
 			}
-
+			
 			return results;
 		}
 	}
@@ -53,7 +53,7 @@ public class Selector {
 			while (rs.next()) {
 				results.add(new Coder(rs.getString(1), rs.getString(2), rs.getInt(3)));
 			}
-
+			
 			return results;
 		}
 	}
